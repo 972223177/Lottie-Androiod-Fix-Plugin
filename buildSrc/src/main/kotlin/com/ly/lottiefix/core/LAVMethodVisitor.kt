@@ -1,12 +1,11 @@
-package com.ly.lottiefix
+package com.ly.lottiefix.core
 
 import org.objectweb.asm.MethodVisitor
-import org.objectweb.asm.Opcodes
 
 /**
  * 解决Lottie在Cancel后也调用了onAnimationEnd的问题
  */
-class LAVMethodVisitor(mv: MethodVisitor) : MethodVisitor(Opcodes.ASM7, mv) {
+class LAVMethodVisitor(api:Int,mv: MethodVisitor) : MethodVisitor(api, mv) {
 
     override fun visitMethodInsn(
         opcode: Int,

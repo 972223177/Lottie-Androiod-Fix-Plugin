@@ -8,7 +8,6 @@ import org.gradle.api.Project
 
 class LottieFixPlugin : Plugin<Project> {
     override fun apply(target: Project) {
-        println("register LottieFix")
         val androidComponentsExtension =
             target.extensions.getByType(AndroidComponentsExtension::class.java)
         androidComponentsExtension.onVariants { variant ->

@@ -4,6 +4,7 @@ import com.android.build.api.instrumentation.AsmClassVisitorFactory
 import com.android.build.api.instrumentation.ClassContext
 import com.android.build.api.instrumentation.ClassData
 import com.android.build.api.instrumentation.InstrumentationParameters
+import com.ly.lottiefix.core.LottieFixClassVisitor
 import org.objectweb.asm.ClassVisitor
 
 abstract class LottieFixPrivacyClassVisitorFactory :

@@ -1,4 +1,4 @@
-package com.ly.lottiefix
+package com.ly.lottiefix.core
 
 import org.objectweb.asm.MethodVisitor
 import org.objectweb.asm.Opcodes.*
@@ -6,7 +6,7 @@ import org.objectweb.asm.Opcodes.*
 /**
  * 解决lottie播放过程中，突然加载不存在的文件导致崩溃的情况
  */
-class IAMMethodVisitor(mv: MethodVisitor) : MethodVisitor(ASM7, mv) {
+class IAMMethodVisitor(api:Int,mv: MethodVisitor) : MethodVisitor(api, mv) {
 
 
     override fun visitInsn(opcode: Int) {

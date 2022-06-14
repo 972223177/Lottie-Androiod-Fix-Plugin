@@ -1,4 +1,4 @@
-package com.ly.lottiefix
+package com.ly.lottiefix.utils
 
 object Log {
     private const val TAG = "LottieFixPlugin"

@@ -1,6 +1,9 @@
-package com.ly.lottiefix
+package com.ly.lottiefix.core
 
-import org.objectweb.asm.*
+import com.ly.lottiefix.utils.Log
+import org.objectweb.asm.ClassVisitor
+import org.objectweb.asm.MethodVisitor
+import org.objectweb.asm.Opcodes
 
 
 class LottieFixClassVisitor(cv: ClassVisitor) : ClassVisitor(Opcodes.ASM7, cv) {
@@ -29,7 +32,7 @@ class LottieFixClassVisitor(cv: ClassVisitor) : ClassVisitor(Opcodes.ASM7, cv) {
             IMAGE_ASSET_MANAGER -> {
                 if (name == BITMAP_FOR_ID && descriptor == BITMAP_FOR_ID_METHOD_DESC) {
                     Log.info("fix ImageAssetManager bitmapForId")
-                    IAMMethodVisitor(mv)
+                    IAMMethodVisitor(api,mv)
                 } else {
                     mv
                 }
@@ -37,7 +40,7 @@ class LottieFixClassVisitor(cv: ClassVisitor) : ClassVisitor(Opcodes.ASM7, cv) {
             LOTTIE_VALUE_ANIMATOR -> {
                 if (name == NOTIFY_CANCEL && descriptor == NOTIFY_CANCEL_METHOD_DESC) {
                     Log.info("fix LottieValueAnimator notifyCancel")
-                    LAVMethodVisitor(mv)
+                    LAVMethodVisitor(api,mv)
                 } else {
                     mv
                 }
@@ -49,6 +52,7 @@ class LottieFixClassVisitor(cv: ClassVisitor) : ClassVisitor(Opcodes.ASM7, cv) {
     }
 
 
+
     companion object {
         private const val BITMAP_FOR_ID = "bitmapForId"
         private const val BITMAP_FOR_ID_METHOD_DESC =
@@ -57,8 +61,8 @@ class LottieFixClassVisitor(cv: ClassVisitor) : ClassVisitor(Opcodes.ASM7, cv) {
         private const val NOTIFY_CANCEL = "notifyCancel"
         private const val NOTIFY_CANCEL_METHOD_DESC = "()V"
 
-        private const val IMAGE_ASSET_MANAGER = "com/airbnb/lottie/manager/ImageAssetManager"
-        private const val LOTTIE_VALUE_ANIMATOR = "com/airbnb/lottie/utils/LottieValueAnimator"
+        const val IMAGE_ASSET_MANAGER = "com/airbnb/lottie/manager/ImageAssetManager"
+        const val LOTTIE_VALUE_ANIMATOR = "com/airbnb/lottie/utils/LottieValueAnimator"
 
     }
 }
