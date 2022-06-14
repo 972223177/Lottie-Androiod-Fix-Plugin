@@ -17,5 +17,6 @@ abstract class LottieFixPrivacyClassVisitorFactory :
         return LottieFixClassVisitor(nextClassVisitor)
     }
 
-    override fun isInstrumentable(classData: ClassData): Boolean = true
+    override fun isInstrumentable(classData: ClassData): Boolean =
+        classData.className == LottieFixClassVisitor.LOTTIE_VALUE_ANIMATOR || classData.className == LottieFixClassVisitor.IMAGE_ASSET_MANAGER
 }
