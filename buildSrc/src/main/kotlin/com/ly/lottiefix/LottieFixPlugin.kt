@@ -14,7 +14,7 @@ class LottieFixPlugin : Plugin<Project> {
             variant.instrumentation.transformClassesWith(
                 LottieFixPrivacyClassVisitorFactory::class.java, InstrumentationScope.ALL
             ) {}
-            variant.instrumentation.setAsmFramesComputationMode(FramesComputationMode.COPY_FRAMES)
+            variant.instrumentation.setAsmFramesComputationMode(FramesComputationMode.COMPUTE_FRAMES_FOR_INSTRUMENTED_METHODS)
         }
     }
 }
